@@ -138,18 +138,29 @@
 ## 三、功能隐藏
 
 ### 1. 登录后首页 - 隐藏左侧菜单
-| 文件 | 菜单项 | 处理方式 |
-|------|--------|---------|
-| `frontend/src/components/menu.vue` | 智能体 (agents) | 隐藏 |
-| `frontend/src/components/menu.vue` | 共享空间 (organizations) | 隐藏 |
-| `frontend/src/components/menu.vue` | 对话 (creatChat) | 隐藏 |
-| `frontend/src/components/menu.vue` | 成员 | 隐藏 |
-| `frontend/src/components/menu.vue` | 网络搜索 | 隐藏 |
-| `frontend/src/components/menu.vue` | MCP | 隐藏 |
-| `frontend/src/components/menu.vue` | IM | 隐藏 |
-| `frontend/src/components/menu.vue` | Chrome插件 | 隐藏 |
+| 文件 | 菜单项 | 处理方式 | 状态 |
+|------|--------|---------|------|
+| `frontend/src/components/menu.vue` | 智能体 (agents) | 隐藏 | ✅ 已完成 |
+| `frontend/src/components/menu.vue` | 共享空间 (organizations) | 隐藏 | ✅ 已完成 |
+| `frontend/src/components/menu.vue` | 对话 (creatChat) | 隐藏 | ✅ 已完成 |
+| `frontend/src/components/menu.vue` | 成员 | 隐藏 | ✅ 已完成 |
+| `frontend/src/components/menu.vue` | 网络搜索 | 隐藏 | ✅ 已完成 |
+| `frontend/src/components/menu.vue` | MCP | 隐藏 | ✅ 已完成 |
+| `frontend/src/components/menu.vue` | IM | 隐藏 | ✅ 已完成 |
+| `frontend/src/components/menu.vue` | Chrome插件 | 隐藏 | ✅ 已完成 |
 
-### 2. 设置页面 - 隐藏左侧菜单
+### 2. 首页账号弹出菜单 - 隐藏菜单项
+| 文件 | 菜单项 | 处理方式 | 状态 |
+|------|--------|---------|------|
+| `frontend/src/components/UserMenu.vue` | 成员管理 (members) | 注释隐藏 | ✅ 已完成 |
+| `frontend/src/components/UserMenu.vue` | 网络搜索 (websearch) | 注释隐藏 | ✅ 已完成 |
+| `frontend/src/components/UserMenu.vue` | MCP服务 (mcp) | 注释隐藏 | ✅ 已完成 |
+| `frontend/src/components/UserMenu.vue` | 已接入的 IM | 注释隐藏 | ✅ 已完成 |
+| `frontend/src/components/UserMenu.vue` | Claw Skill | 注释隐藏 | ✅ 已完成 |
+| `frontend/src/components/UserMenu.vue` | Chrome 插件 | 注释隐藏 | ✅ 已完成 |
+| `frontend/src/components/UserMenu.vue` | GitHub ★ | 注释隐藏 | ✅ 已完成 |
+
+### 3. 设置页面 - 隐藏左侧菜单
 | 文件 | 菜单项 | 处理方式 |
 |------|--------|---------|
 | `frontend/src/views/settings/Settings.vue` | 空间信息 (tenant) | 隐藏 |
