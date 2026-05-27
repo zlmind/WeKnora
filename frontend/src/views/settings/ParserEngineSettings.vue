@@ -97,33 +97,6 @@
           </p>
         </div>
 
-        <!-- weknoracloud: 凭证状态 -->
-        <template v-if="currentEngine.Name === 'weknoracloud'">
-          <div v-if="wkcState === 'configured'" class="wkc-status wkc-status--ok">
-            <t-icon name="check-circle" style="font-size: 15px; color: var(--td-success-color); flex-shrink: 0;" />
-            <span>{{ $t('settings.weknoraCloud.credentialConfigured') }}</span>
-          </div>
-          <div v-else-if="wkcState === 'loading'" class="wkc-status">
-            <t-loading size="small" />
-            <span>{{ $t('settings.weknoraCloud.checkingStatus') }}</span>
-          </div>
-          <div v-else class="wkc-status wkc-status--warn">
-            <t-icon name="error-circle" style="font-size: 15px; color: #f97316; flex-shrink: 0;" />
-            <div style="flex: 1;">
-              <span v-if="wkcState === 'expired'">{{ $t('settings.weknoraCloud.credentialExpired') }}</span>
-              <span v-else>{{ $t('settings.weknoraCloud.unconfigured') }}</span>
-              <div style="margin-top: 6px;">
-                <t-button
-                  variant="text"
-                  size="small"
-                  theme="primary"
-                  @click="goToWkcSettings"
-                  style="padding: 0; height: auto;"
-                >{{ $t('settings.weknoraCloud.goToSettings') }}</t-button>
-              </div>
-            </div>
-          </div>
-        </template>
 
         <div v-if="currentEngine.FileTypes && currentEngine.FileTypes.length" class="file-types">
           <t-tag
@@ -248,7 +221,7 @@ import {
   type ParserEngineInfo,
   type ParserEngineConfig,
 } from '@/api/system'
-import { getWeKnoraCloudStatus } from '@/api/model'
+// import { getWeKnoraCloudStatus } from '@/api/model' // 已删除weknoracloud相关代码
 
 const { t } = useI18n()
 const uiStore = useUIStore()
@@ -258,7 +231,7 @@ const CONFIGURABLE_ENGINES = new Set(['mineru', 'mineru_cloud'])
 
 /** 各解析引擎的项目/官方文档地址 */
 const ENGINE_DOC_LINKS: Record<string, string> = {
-  weknoracloud: 'https://developers.weixin.qq.com/doc/aispeech/knowledge/atomic_capability/atomic_interface.html',
+  // weknoracloud: 'https://developers.weixin.qq.com/doc/aispeech/knowledge/atomic_capability/atomic_interface.html', // 已删除
   markitdown: 'https://github.com/microsoft/markitdown',
   mineru: 'https://github.com/opendatalab/MinerU',
   mineru_cloud: 'https://mineru.net/apiManage/docs',
@@ -308,7 +281,7 @@ const drawerTitle = computed(() => {
 /** 固定展示顺序，未列出的引擎排在末尾按名称排序 */
 const ENGINE_ORDER: Record<string, number> = {
   builtin: 0,
-  weknoracloud: 1,
+  // weknoracloud: 1, // 已删除
   simple: 2,
   markitdown: 3,
   mineru: 4,
@@ -493,32 +466,32 @@ async function onSave() {
   }
 }
 
-// ---- WeKnoraCloud 凭证状态 ----
-const wkcState = ref<'loading' | 'unconfigured' | 'configured' | 'expired'>('loading')
-
-async function checkWkcStatus() {
-  wkcState.value = 'loading'
-  try {
-    const status = await getWeKnoraCloudStatus()
-    if (status.needs_reinit) {
-      wkcState.value = 'expired'
-    } else if (status.has_models) {
-      wkcState.value = 'configured'
-    } else {
-      wkcState.value = 'unconfigured'
-    }
-  } catch {
-    wkcState.value = 'unconfigured'
-  }
-}
-
-async function goToWkcSettings() {
-  if (uiStore.showSettingsModal) {
-    uiStore.closeSettings()
-    await nextTick()
-  }
-  uiStore.openSettings('weknoracloud')
-}
+// ---- WeKnoraCloud 凭证状态 ---- (已删除)
+// const wkcState = ref<'loading' | 'unconfigured' | 'configured' | 'expired'>('loading')
+//
+// async function checkWkcStatus() {
+//   wkcState.value = 'loading'
+//   try {
+//     const status = await getWeKnoraCloudStatus()
+//     if (status.needs_reinit) {
+//       wkcState.value = 'expired'
+//     } else if (status.has_models) {
+//       wkcState.value = 'configured'
+//     } else {
+//       wkcState.value = 'unconfigured'
+//     }
+//   } catch {
+//     wkcState.value = 'unconfigured'
+//   }
+// }
+//
+// async function goToWkcSettings() {
+//   if (uiStore.showSettingsModal) {
+//     uiStore.closeSettings()
+//     await nextTick()
+//   }
+//   uiStore.openSettings('weknoracloud')
+// }
 
 onMounted(loadAll)
 </script>
@@ -760,29 +733,29 @@ onMounted(loadAll)
   cursor: help;
 }
 
-// ---- WeKnoraCloud 凭证状态 ----
-.wkc-status {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  padding: 12px 16px;
-  border-radius: 6px;
-  font-size: 13px;
-  color: var(--td-text-color-secondary);
-  background: var(--td-bg-color-secondarycontainer);
-
-  &--ok {
-    background: var(--td-success-color-light);
-    border: 1px solid var(--td-success-color-focus);
-    color: var(--td-success-color);
-  }
-
-  &--warn {
-    background: #fff7ed;
-    border: 1px solid #fed7aa;
-    border-left: 3px solid #f97316;
-  }
-}
+// ---- WeKnoraCloud 凭证状态 ---- (已删除)
+// .wkc-status {
+//   display: flex;
+//   align-items: flex-start;
+//   gap: 8px;
+//   padding: 12px 16px;
+//   border-radius: 6px;
+//   font-size: 13px;
+//   color: var(--td-text-color-secondary);
+//   background: var(--td-bg-color-secondarycontainer);
+//
+//   &--ok {
+//     background: var(--td-success-color-light);
+//     border: 1px solid var(--td-success-color-focus);
+//     color: var(--td-success-color);
+//   }
+//
+//   &--warn {
+//     background: #fff7ed;
+//     border: 1px solid #fed7aa;
+//     border-left: 3px solid #f97316;
+//   }
+// }
 
 .api-test-section {
   display: flex;

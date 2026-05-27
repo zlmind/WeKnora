@@ -311,15 +311,21 @@ const getIconActiveState = (itemPath: string) => {
 };
 
 // 分离上下两部分菜单（使用 visibleMenuArr 以便 lite 模式过滤 logout）
+// 已隐藏：agents, organizations, websearch, mcp, chrome插件, IM, 成员
 const topMenuItems = computed<MenuItem[]>(() => {
     return (visibleMenuArr.value as unknown as MenuItem[]).filter((item: MenuItem) =>
-        item.path === 'knowledge-bases' || item.path === 'agents' || item.path === 'organizations' || item.path === 'creatChat'
+        item.path === 'knowledge-bases' || item.path === 'creatChat'
     );
 });
 
 const bottomMenuItems = computed<MenuItem[]>(() => {
     return (visibleMenuArr.value as unknown as MenuItem[]).filter((item: MenuItem) => {
+        // 隐藏顶部菜单项
         if (item.path === 'knowledge-bases' || item.path === 'agents' || item.path === 'organizations' || item.path === 'creatChat') {
+            return false;
+        }
+        // 隐藏其他功能菜单项：网络搜索、MCP、IM、Chrome插件
+        if (item.path === 'websearch' || item.path === 'mcp' || item.path === 'im' || item.path === 'chrome-extension') {
             return false;
         }
         return true;

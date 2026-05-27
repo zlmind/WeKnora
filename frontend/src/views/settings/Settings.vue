@@ -36,14 +36,14 @@
                         <line x1="2.94" y1="12.5" x2="15.06" y2="12.5" stroke="currentColor" stroke-width="1.2"
                           stroke-linecap="round" />
                       </svg>
-                      <!-- WeKnora Cloud 使用自定义 W 图标 -->
-                      <svg v-else-if="item.key === 'weknoracloud'" width="17" height="17" viewBox="0 0 18 18"
+                      <!-- WeKnora Cloud 使用自定义 W 图标 - 已隐藏 -->
+                      <!-- <svg v-else-if="item.key === 'weknoracloud'" width="17" height="17" viewBox="0 0 18 18"
                         fill="none" xmlns="http://www.w3.org/2000/svg" class="nav-icon">
                         <rect x="1.5" y="1.5" width="15" height="15" rx="3.5" stroke="currentColor" stroke-width="1.2"
                           fill="none" />
                         <path d="M4.5 5.5L6.5 12.5L9 7.5L11.5 12.5L13.5 5.5" stroke="currentColor" stroke-width="1.3"
                           stroke-linecap="round" stroke-linejoin="round" fill="none" />
-                      </svg>
+                      </svg> -->
                       <t-icon v-else :name="item.icon" class="nav-icon" />
                       <span class="nav-label">{{ item.label }}</span>
                       <t-icon v-if="item.children && item.children.length > 0"
@@ -96,10 +96,10 @@
                     <OllamaSettings />
                   </div>
 
-                  <!-- WeKnora Cloud -->
-                  <div v-if="currentSection === 'weknoracloud'" class="section">
+                  <!-- WeKnora Cloud - 已隐藏 -->
+                  <!-- <div v-if="currentSection === 'weknoracloud'" class="section">
                     <WeKnoraCloudSettings />
-                  </div>
+                  </div> -->
 
                   <!-- 模型配置 -->
                   <div v-if="currentSection === 'models'" class="section">
@@ -196,7 +196,7 @@ import ChatHistorySettings from './ChatHistorySettings.vue'
 import VectorStoreSettings from './VectorStoreSettings.vue'
 import ParserEngineSettings from './ParserEngineSettings.vue'
 import StorageEngineSettings from './StorageEngineSettings.vue'
-import WeKnoraCloudSettings from './WeKnoraCloudSettings.vue'
+// import WeKnoraCloudSettings from './WeKnoraCloudSettings.vue' // 已隐藏
 import TenantMembers from './TenantMembers.vue'
 import SystemSettings from '@/views/system/SystemSettings.vue'
 
@@ -291,13 +291,20 @@ const navItems = computed(() => {
     { key: 'members', icon: 'usergroup', label: t('tenantMember.title') },
     { key: 'api', icon: 'secured', label: t('settings.apiInfo') },
   ]
+
+  // 需要隐藏的菜单项
+  const hiddenMenuItems = ['tenant', 'members', 'weknoracloud', 'websearch', 'mcp', 'chathistory', 'system']
+
   // currentTenantRole 为空表示「membership 还没加载」—— 比起渲染整套
   // viewer 入口然后角色一返回又消失，先卡住不渲染更稳，跟原先 members
   // 入口的策略一致。
   if (!authStore.currentTenantRole && !authStore.canAccessAllTenants) {
     return [] as NavItem[]
   }
-  return all.filter((it) => canSeeSection(it.key))
+
+  return all
+    .filter((it) => canSeeSection(it.key))
+    .filter((it) => !hiddenMenuItems.includes(it.key))
 })
 
 const navGroups = computed<NavGroup[]>(() => {
