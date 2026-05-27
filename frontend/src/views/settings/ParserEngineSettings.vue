@@ -372,7 +372,7 @@ async function loadConfig() {
 async function loadAll() {
   loading.value = true
   error.value = ''
-  await Promise.all([loadEngines(), loadConfig(), checkWkcStatus()])
+  await Promise.all([loadEngines(), loadConfig()])
   loading.value = false
 }
 
