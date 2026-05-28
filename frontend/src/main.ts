@@ -2,6 +2,8 @@ import { createApp } from "vue";
 import { createPinia } from "pinia";
 import App from "./App.vue";
 import router from "./router";
+// 引入 Tailwind CSS
+import "./assets/styles/tailwind.css";
 import "./assets/fonts.css";
 import TDesign from "tdesign-vue-next";
 // 引入组件库的少量全局样式变量

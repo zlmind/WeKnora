@@ -1187,7 +1187,7 @@ export default {
     registerNow: "立即注册",
     registerSuccess: "注册成功！系统已为您创建专属空间，请登录",
     registerFailed: "注册失败",
-    subtitle: "基于大模型的文档理解和语义搜索框架",
+    subtitle: "欢迎使用千橙云智能文档检索平台",
     registerSubtitle: "注册后系统将为您创建专属空间",
     emailPlaceholder: "输入邮箱地址",
     passwordPlaceholder: "输入密码（8-32个字符，包含字母和数字）",
