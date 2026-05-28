@@ -94,7 +94,7 @@
 
     <!-- Logo - Top Left -->
     <div class="header-logo">
-      <img src="@/assets/img/weknora.png" alt="Product" class="logo-image" />
+      <img src="@/assets/img/logo.png" alt="Product" class="logo-image" />
     </div>
 
     <!-- Header Links - Top Right -->
