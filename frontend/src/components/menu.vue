@@ -43,9 +43,8 @@
 
         <!-- 上半部分：知识库和对话 -->
         <div class="menu_top">
-            <!-- 全局搜索入口：点击打开命令面板（⌘K）。放在一级导航最上方，
-                 展开态展示快捷键提示，折叠态仅图标 + tooltip。 -->
-            <div class="menu_box menu_box--cmdk">
+            <!-- 全局搜索入口已隐藏 -->
+            <!-- <div class="menu_box menu_box--cmdk">
                 <t-tooltip :content="cmdkTooltip" placement="right" :disabled="!uiStore.sidebarCollapsed">
                     <div class="menu_item menu_item--cmdk" @click="commandPaletteStore.openPalette('')">
                         <div class="menu_item-box">
@@ -61,7 +60,7 @@
                         </div>
                     </div>
                 </t-tooltip>
-            </div>
+            </div> -->
             <div class="menu_box" :class="{ 'has-submenu': item.children }" v-for="(item, index) in topMenuItems"
                 :key="index">
                 <t-tooltip :content="item.title" placement="right" :disabled="!uiStore.sidebarCollapsed">

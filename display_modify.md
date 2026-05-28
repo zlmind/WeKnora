@@ -148,6 +148,8 @@
 | `frontend/src/components/menu.vue` | MCP | 隐藏 | ✅ 已完成 |
 | `frontend/src/components/menu.vue` | IM | 隐藏 | ✅ 已完成 |
 | `frontend/src/components/menu.vue` | Chrome插件 | 隐藏 | ✅ 已完成 |
+| `frontend/src/components/menu.vue` | 全局搜索框 (⌘K / menu_box--cmdk) | 注释隐藏 | ✅ 已完成 |
+| `frontend/src/components/menu.vue` | 对话记录列表（昨天/最近7天分组，随 creatChat 隐藏一并不渲染） | 随 creatChat 隐藏 | ✅ 已完成 |
 
 ### 2. 首页账号弹出菜单 - 隐藏菜单项
 | 文件 | 菜单项 | 处理方式 | 状态 |
