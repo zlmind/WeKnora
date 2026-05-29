@@ -289,7 +289,9 @@ const ENGINE_ORDER: Record<string, number> = {
 }
 
 const sortedEngines = computed(() => {
-  return [...engines.value].sort((a, b) => {
+  return [...engines.value]
+    .filter(e => e.Name !== 'weknoracloud')
+    .sort((a, b) => {
     const oa = ENGINE_ORDER[a.Name] ?? 100
     const ob = ENGINE_ORDER[b.Name] ?? 100
     if (oa !== ob) return oa - ob
