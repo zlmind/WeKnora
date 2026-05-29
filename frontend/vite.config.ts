@@ -14,7 +14,7 @@ const FRONTEND_VERSION = pkg.version ?? 'unknown'
 const DEV_PROXY_TARGET =
   process.env.VITE_DEV_PROXY_TARGET ||
   process.env.FRONTEND_BACKEND_URL ||
-  'http://localhost:8080'
+  'http://171.16.52.22:8180'
 
 function resolveVueOfficePptxEntry(): string {
   try {

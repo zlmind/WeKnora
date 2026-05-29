@@ -66,17 +66,15 @@
              分别对应 viewer/viewer/admin/admin/owner（详情见 Settings.vue 的
              SECTION_MIN_ROLE）。低角色用户看到这些入口点进去也只能看到
              role-denied 兜底页，索性藏起来。 -->
-        <!-- members: hidden per display_modify.md -->
-        <!-- <div v-if="canSeeQuickNav('members')" class="menu-item" @click="handleQuickNav('members')">
+        <div v-if="canSeeQuickNav('members')" class="menu-item" @click="handleQuickNav('members')">
           <t-icon name="usergroup" class="menu-icon" />
           <span>{{ $t('tenantMember.title') }}</span>
-        </div> -->
+        </div>
         <div v-if="canSeeQuickNav('models')" class="menu-item" @click="handleQuickNav('models')">
           <t-icon name="control-platform" class="menu-icon" />
           <span>{{ $t('settings.modelManagement') }}</span>
         </div>
-        <!-- websearch: hidden per display_modify.md -->
-        <!-- <div v-if="canSeeQuickNav('websearch')" class="menu-item" @click="handleQuickNav('websearch')">
+        <div v-if="canSeeQuickNav('websearch')" class="menu-item" @click="handleQuickNav('websearch')">
           <svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"
             class="menu-icon svg-icon">
             <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.2" fill="none" />
@@ -88,18 +86,16 @@
               stroke-linecap="round" />
           </svg>
           <span>{{ $t('settings.webSearchConfig') }}</span>
-        </div> -->
-        <!-- mcp: hidden per display_modify.md -->
-        <!-- <div v-if="canSeeQuickNav('mcp')" class="menu-item" @click="handleQuickNav('mcp')">
+        </div>
+        <div v-if="canSeeQuickNav('mcp')" class="menu-item" @click="handleQuickNav('mcp')">
           <t-icon name="tools" class="menu-icon" />
           <span>{{ $t('settings.mcpService') }}</span>
-        </div> -->
+        </div>
         <div v-if="canSeeQuickNav('api')" class="menu-item" @click="handleQuickNav('api')">
           <t-icon name="secured" class="menu-icon" />
           <span>{{ $t('settings.apiInfo') }}</span>
         </div>
-        <!-- IM: hidden per display_modify.md -->
-        <!-- <div ref="imMenuItemRef" class="menu-item menu-item--submenu" :class="{ 'is-open': imSubmenuOpen }"
+        <div ref="imMenuItemRef" class="menu-item menu-item--submenu" :class="{ 'is-open': imSubmenuOpen }"
           @mouseenter="showIMSubmenu" @mouseleave="scheduleHideIMSubmenu">
           <t-icon name="link" class="menu-icon" />
           <span class="menu-item-label">{{ $t('imOverview.menuTitle') }}</span>
@@ -108,7 +104,7 @@
             <span class="live-indicator-dot"></span>
           </span>
           <t-icon name="chevron-right" class="menu-chevron" />
-        </div> -->
+        </div>
         <div class="menu-divider"></div>
         <div class="menu-item" @click="handleSettings">
           <t-icon name="setting" class="menu-icon" />
@@ -126,8 +122,7 @@
         </div>
         <!-- 切换租户入口在下拉「当前租户」区块 hover；此处仅为分隔线与菜单项。 -->
         <div class="menu-divider"></div>
-        <!-- Claw Skill: hidden per display_modify.md -->
-        <!-- <div class="menu-item" @click="openClawhubSkill">
+        <div class="menu-item" @click="openClawhubSkill">
           <span class="menu-icon menu-icon--emoji" role="img" :aria-label="$t('common.clawhubSkill')">🦞</span>
           <span class="menu-text-with-icon">
             <span>{{ $t('common.clawhubSkill') }}</span>
@@ -137,9 +132,8 @@
                 d="M12.667 8a.667.667 0 0 1 .666.667v4a2.667 2.667 0 0 1-2.666 2.666H4.667a2.667 2.667 0 0 1-2.667-2.666V5.333a2.667 2.667 0 0 1 2.667-2.666h4a.667.667 0 1 1 0 1.333h-4a1.333 1.333 0 0 0-1.333 1.333v7.334A1.333 1.333 0 0 0 4.667 13.333h6a1.333 1.333 0 0 0 1.333-1.333v-4A.667.667 0 0 1 12.667 8Zm2.666-6.667v4a.667.667 0 0 1-1.333 0V3.276l-5.195 5.195a.667.667 0 0 1-.943-.943l5.195-5.195h-2.057a.667.667 0 0 1 0-1.333h4a.667.667 0 0 1 .666.666Z" />
             </svg>
           </span>
-        </div> -->
-        <!-- Chrome 插件: hidden per display_modify.md -->
-        <!-- <div class="menu-item" @click="openChromeExtension">
+        </div>
+        <div class="menu-item" @click="openChromeExtension">
           <t-icon name="extension" class="menu-icon" />
           <span class="menu-text-with-icon">
             <span>{{ $t('common.chromeExtension') }}</span>
@@ -149,7 +143,7 @@
                 d="M12.667 8a.667.667 0 0 1 .666.667v4a2.667 2.667 0 0 1-2.666 2.666H4.667a2.667 2.667 0 0 1-2.667-2.666V5.333a2.667 2.667 0 0 1 2.667-2.666h4a.667.667 0 1 1 0 1.333h-4a1.333 1.333 0 0 0-1.333 1.333v7.334A1.333 1.333 0 0 0 4.667 13.333h6a1.333 1.333 0 0 0 1.333-1.333v-4A.667.667 0 0 1 12.667 8Zm2.666-6.667v4a.667.667 0 0 1-1.333 0V3.276l-5.195 5.195a.667.667 0 0 1-.943-.943l5.195-5.195h-2.057a.667.667 0 0 1 0-1.333h4a.667.667 0 0 1 .666.666Z" />
             </svg>
           </span>
-        </div> -->
+        </div>
         <!-- GitHub: hidden per display_modify.md -->
         <!-- <div class="menu-item" :title="$t('common.githubStarTip')" @click="openGithub">
           <t-icon name="logo-github" class="menu-icon" />

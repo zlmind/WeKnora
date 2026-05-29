@@ -43,8 +43,9 @@
 
         <!-- 上半部分：知识库和对话 -->
         <div class="menu_top">
-            <!-- 全局搜索入口已隐藏 -->
-            <!-- <div class="menu_box menu_box--cmdk">
+            <!-- 全局搜索入口：点击打开命令面板（⌘K）。放在一级导航最上方，
+                 搜索范围覆盖知识库、会话、智能体、设置页等所有可导航对象。 -->
+            <div class="menu_box menu_box--cmdk">
                 <t-tooltip :content="cmdkTooltip" placement="right" :disabled="!uiStore.sidebarCollapsed">
                     <div class="menu_item menu_item--cmdk" @click="commandPaletteStore.openPalette('')">
                         <div class="menu_item-box">
@@ -60,7 +61,7 @@
                         </div>
                     </div>
                 </t-tooltip>
-            </div> -->
+            </div>
             <div class="menu_box" :class="{ 'has-submenu': item.children }" v-for="(item, index) in topMenuItems"
                 :key="index">
                 <t-tooltip :content="item.title" placement="right" :disabled="!uiStore.sidebarCollapsed">
@@ -310,21 +311,15 @@ const getIconActiveState = (itemPath: string) => {
 };
 
 // 分离上下两部分菜单（使用 visibleMenuArr 以便 lite 模式过滤 logout）
-// 已隐藏：agents, organizations, creatChat(对话), websearch, mcp, chrome插件, IM, 成员
 const topMenuItems = computed<MenuItem[]>(() => {
     return (visibleMenuArr.value as unknown as MenuItem[]).filter((item: MenuItem) =>
-        item.path === 'knowledge-bases'
+        item.path === 'knowledge-bases' || item.path === 'agents' || item.path === 'organizations' || item.path === 'creatChat'
     );
 });
 
 const bottomMenuItems = computed<MenuItem[]>(() => {
     return (visibleMenuArr.value as unknown as MenuItem[]).filter((item: MenuItem) => {
-        // 隐藏顶部菜单项
         if (item.path === 'knowledge-bases' || item.path === 'agents' || item.path === 'organizations' || item.path === 'creatChat') {
-            return false;
-        }
-        // 隐藏其他功能菜单项：网络搜索、MCP、IM、Chrome插件
-        if (item.path === 'websearch' || item.path === 'mcp' || item.path === 'im' || item.path === 'chrome-extension') {
             return false;
         }
         return true;

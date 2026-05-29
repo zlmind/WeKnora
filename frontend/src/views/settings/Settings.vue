@@ -241,7 +241,6 @@ type RoleKey = 'viewer' | 'contributor' | 'admin' | 'owner'
 const SECTION_MIN_ROLE: Record<string, RoleKey> = {
   general: 'viewer',
   ollama: 'admin',
-  weknoracloud: 'admin',
   models: 'viewer',
   websearch: 'admin',
   chathistory: 'admin',
@@ -276,7 +275,6 @@ const navItems = computed(() => {
   const all: NavItem[] = [
     { key: 'general', icon: 'setting', label: t('general.title') },
     { key: 'ollama', icon: 'server', label: 'Ollama' },
-    { key: 'weknoracloud', icon: '', label: 'WeKnora Cloud' },
     { key: 'models', icon: 'control-platform', label: t('settings.modelManagement') },
     { key: 'websearch', icon: 'search', label: t('settings.webSearchConfig') },
     { key: 'chathistory', icon: 'chat', label: t('chatHistorySettings.title') },
@@ -293,7 +291,7 @@ const navItems = computed(() => {
   ]
 
   // 需要隐藏的菜单项
-  const hiddenMenuItems = ['tenant', 'members', 'weknoracloud', 'websearch', 'mcp', 'chathistory', 'system']
+  const hiddenMenuItems = ['weknoracloud', 'chathistory', 'system']
 
   // currentTenantRole 为空表示「membership 还没加载」—— 比起渲染整套
   // viewer 入口然后角色一返回又消失，先卡住不渲染更稳，跟原先 members
@@ -320,7 +318,7 @@ const navGroups = computed<NavGroup[]>(() => {
     {
       key: 'models_runtime',
       label: t('settings.navGroups.modelsRuntime'),
-      items: pickItems(['models', 'ollama', 'weknoracloud']),
+      items: pickItems(['models', 'ollama']),
     },
     {
       key: 'integrations',
